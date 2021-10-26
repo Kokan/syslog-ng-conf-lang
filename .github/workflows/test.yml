@@ -50,6 +50,7 @@ jobs:
       - name: test tic-tac-toe
         run: |
           /tmp/install/sbin/syslog-ng -F -f tic-tac-toe.conf > output.txt &
+          echo "b2" >> input.txt
           sleep 5
           /tmp/install/sbin/syslog-ng-ctl stop
 
