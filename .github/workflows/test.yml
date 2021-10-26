@@ -37,4 +37,14 @@ jobs:
           set -e
           wc -l output.txt | grep 99
           grep -c '3141592901' output.txt 
+
+      - name: test zero cost condition
+        run: |
+          /tmp/install/sbin/syslog-ng -F -f zero-cost-condition.conf > output.txt &
+          sleep 5
+          /tmp/install/sbin/syslog-ng-ctl stop
+
+          set -e
+          grep -c 'parse-A' output.txt 
+       
        
